@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Encryption/Decryption</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Image Encryption/Decryption</h1>
+        <div class="text-center mb-4">
+            <button id="encryptBtn" class="btn btn-primary mr-3">Encrypt</button>
+            <button id="decryptBtn" class="btn btn-primary">Decrypt</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('encryptBtn').addEventListener('click', function() {
+            // Inform user that encryption process has started
+            alert('Encryption process started. Please wait for the download.');
+
+            // Simulate file download (replace with actual AJAX call)
+            setTimeout(function() {
+                // Create a fake download link for the HDF5 file
+                var downloadLink = document.createElement('a');
+                downloadLink.href = 'image_matrix.h5'; // Replace with actual file URL
+                downloadLink.download = 'image_matrix.h5';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+
+                // Inform user that encryption process is completed
+                alert('Encryption process completed. Image has been encrypted and downloaded.');
+            }, 2000); // Simulated delay for demonstration purposes
+        });
+
+        document.getElementById('decryptBtn').addEventListener('click', function() {
+            // Inform user to select the encrypted HDF5 file for decryption
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.h5';
+            fileInput.onchange = function(event) {
+                var file = event.target.files[0];
+                if (file) {
+                    // Inform user that decryption process has started
+                    alert('Decryption process started. Please wait for the download.');
+
+                    // Simulate decryption process (replace with actual decryption logic)
+                    setTimeout(function() {
+                        // Create a fake download link for the decrypted image
+                        var downloadLink = document.createElement('a');
+                        downloadLink.href = 'decrypted_image.png'; // Replace with actual file URL
+                        downloadLink.download = 'decrypted_image.png';
+                        document.body.appendChild(downloadLink);
+                        downloadLink.click();
+                        document.body.removeChild(downloadLink);
+
+                        // Inform user that decryption process is completed
+                        alert('Decryption process completed. Image has been decrypted and downloaded.');
+                    }, 2000); // Simulated delay for demonstration purposes
+                }
+            };
+            fileInput.click();
+        });
+    </script>
+</body>
+</html>
